@@ -50,6 +50,7 @@ Every payload carries `provider` (which data source answered) and, where availab
 |----------|-------------|-----|--------|-------|
 | Yahoo Finance (`yfinance`) | `YFinance()` (default) or `"yfinance"` | none | all 11 tools | `pip install yfinance`. Unofficial, rate-limited under load, personal-use terms. |
 | financialdatasets.ai | `FinancialDatasets()` or `"financial_datasets"` | `FINANCIAL_DATASETS_API_KEY` | 9 tools (no `search_symbols`, no `get_analyst_recommendations`) | Structured, real-time, commercial use on all plans. Requests cost credits (see financialdatasets.ai/pricing). No extra dependency. |
+| FXMacroData | `FXMacroData()` or `"fxmacrodata"` | `FXMACRODATA_API_KEY` | 4 tools (`search_symbols`, `get_quote`, `get_price_history`, `get_news`) | FX pairs across 18 currencies. Official central-bank and BIS daily reference rates, not venue prices; no company-level data. No extra dependency. |
 | Your own | `FinanceProvider` subclass | - | whatever it declares | See `06_custom_provider.py`. |
 
 Providers live in `agno.tools.finance.providers` and are re-exported from `agno.tools.finance`. Pass an instance (recommended: constructor kwargs like `api_key`, `timeout`, `session` are explicit) or a registered id string (handy for env/config-driven setups). The toolkit registers only the tools the selected provider declares, so the model never sees a tool it cannot use.
@@ -64,6 +65,7 @@ Providers live in `agno.tools.finance.providers` and are re-exported from `agno.
 | `04_analyst_mode.py` | `all=True`: statements, insider trades, earnings, filings for a deep dive |
 | `05_async.py` | `agent.arun()` fanned out over three tickers; async tool variants used automatically |
 | `06_custom_provider.py` | Bring your own provider (an internal price table) and register it by id |
+| `07_fxmacrodata.py` | Currency pairs instead of tickers: FX reference rates and central-bank press releases |
 
 ## Configuration
 

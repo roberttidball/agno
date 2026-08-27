@@ -7,12 +7,14 @@ from agno.tools.finance.providers import FinancialDatasets, YFinance
 
 FinanceTools(provider=YFinance())            # default: no API key
 FinanceTools(provider=FinancialDatasets())   # FINANCIAL_DATASETS_API_KEY
+FinanceTools(provider=FXMacroData())         # FXMACRODATA_API_KEY, FX reference rates
 ```
 
 Bring your own by subclassing `agno.tools.finance.FinanceProvider`.
 """
 
 from agno.tools.finance.providers.financial_datasets import FinancialDatasets
+from agno.tools.finance.providers.fxmacrodata import FXMacroData
 from agno.tools.finance.providers.yfinance import YFinance
 
-__all__ = ["FinancialDatasets", "YFinance"]
+__all__ = ["FXMacroData", "FinancialDatasets", "YFinance"]

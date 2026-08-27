@@ -120,6 +120,15 @@ def _register_builtin_providers() -> None:
 
         register_provider("financial_datasets", _financial_datasets)
 
+    if _get_registered_provider("fxmacrodata") is None:
+
+        def _fxmacrodata(**kwargs: Any) -> FinanceProvider:
+            from agno.tools.finance.providers.fxmacrodata import FXMacroData
+
+            return FXMacroData(**kwargs)
+
+        register_provider("fxmacrodata", _fxmacrodata)
+
 
 def _yfinance_importable() -> bool:
     try:

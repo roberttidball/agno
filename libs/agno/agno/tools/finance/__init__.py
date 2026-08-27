@@ -11,7 +11,8 @@ agent = Agent(model="openai:gpt-5.6", tools=[FinanceTools(provider=FinancialData
 agent.print_response("Give me a market brief on NVIDIA", stream=True)
 ```
 
-Providers live in `agno.tools.finance.providers` (`YFinance`, `FinancialDatasets`)
+Providers live in `agno.tools.finance.providers` (`YFinance`, `FinancialDatasets`,
+`FXMacroData`)
 and are re-exported here for one-line imports. Bring your own by subclassing
 `FinanceProvider`.
 """
@@ -37,7 +38,7 @@ from agno.tools.finance.base import (
     register_provider,
     registered_providers,
 )
-from agno.tools.finance.providers import FinancialDatasets, YFinance
+from agno.tools.finance.providers import FinancialDatasets, FXMacroData, YFinance
 from agno.tools.finance.toolkit import FinanceTools
 
 __all__ = [
@@ -48,6 +49,7 @@ __all__ = [
     "Filing",
     "FinanceProvider",
     "FinanceProviderError",
+    "FXMacroData",
     "FinanceTools",
     "FinancialDatasets",
     "FinancialStatement",
